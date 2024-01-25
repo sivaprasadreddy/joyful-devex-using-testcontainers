@@ -1,0 +1,13 @@
+### List products
+GET http://localhost:8080/api/products
+
+### Create Post
+POST http://localhost:8080/api/products
+Content-Type: application/json
+
+{
+    "code": "P123",
+    "name": "Product 123",
+    "description": "Product 123 description",
+    "price": 100
+}
