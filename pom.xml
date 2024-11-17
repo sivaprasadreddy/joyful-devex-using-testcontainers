@@ -15,5 +15,6 @@
         <module>spring-boot-tc-dev-testing</module>
         <module>spring-boot-localstack-demo</module>
         <module>quarkus-tc-dev-testing</module>
+        <module>micronaut-tc-dev-testing</module>
     </modules>
 </project>
