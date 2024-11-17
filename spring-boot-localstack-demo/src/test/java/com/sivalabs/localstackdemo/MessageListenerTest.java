@@ -1,6 +1,6 @@
 package com.sivalabs.localstackdemo;
 
-import static com.sivalabs.localstackdemo.ContainersConfig.QUEUE_NAME;
+import static com.sivalabs.localstackdemo.TestcontainersConfig.QUEUE_NAME;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.awaitility.Awaitility.await;
 
@@ -15,7 +15,7 @@ class MessageListenerTest extends AbstractIntegrationTest {
     StorageService storageService;
 
     @Autowired
-    MessageSender publisher;
+    MessageSender messageSender;
 
     @Autowired
     ApplicationProperties properties;
@@ -23,7 +23,7 @@ class MessageListenerTest extends AbstractIntegrationTest {
     @Test
     void shouldHandleMessageSuccessfully() {
         Message message = new Message(UUID.randomUUID(), "Hello World");
-        publisher.publish(QUEUE_NAME, message);
+        messageSender.publish(QUEUE_NAME, message);
 
         await().pollInterval(Duration.ofSeconds(2))
                 .atMost(Duration.ofSeconds(10))
