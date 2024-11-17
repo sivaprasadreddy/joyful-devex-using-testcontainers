@@ -6,7 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.sivalabs</groupId>
     <artifactId>joyful-devex-using-testcontainers</artifactId>
-    <version>0.0.1</version>
+    <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>joyful-devex-using-testcontainers</name>
 
