@@ -13,6 +13,7 @@
     <groupId>io.micronaut.platform</groupId>
     <artifactId>micronaut-parent</artifactId>
     <version>4.7.0</version>
+    <relativePath/>
   </parent>
   <properties>
     <packaging>jar</packaging>
