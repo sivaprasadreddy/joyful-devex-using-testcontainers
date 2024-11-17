@@ -33,12 +33,6 @@
 
 - [Micronaut Test Resources documentation](https://micronaut-projects.github.io/micronaut-test-resources/latest/guide/)
 
-
-## Feature testcontainers documentation
-
-- [https://www.testcontainers.org/](https://www.testcontainers.org/)
-
-
 ## Feature assertj documentation
 
 - [https://assertj.github.io/doc/](https://assertj.github.io/doc/)
