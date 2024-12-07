@@ -3,7 +3,7 @@ package com.sivalabs.localstackdemo;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.springframework.context.annotation.Bean;
-import org.springframework.test.context.DynamicPropertyRegistry;
+import org.springframework.test.context.DynamicPropertyRegistrar;
 import org.testcontainers.containers.localstack.LocalStackContainer;
 import org.testcontainers.utility.DockerImageName;
 
@@ -16,9 +16,9 @@ public class TestcontainersConfig {
 
     @Bean
     @ServiceConnection
-    LocalStackContainer localstackContainer(DynamicPropertyRegistry registry) {
+    LocalStackContainer localstackContainer() {
         LocalStackContainer localStack =
-                new LocalStackContainer(DockerImageName.parse("localstack/localstack:3.8.1"));
+                new LocalStackContainer(DockerImageName.parse("localstack/localstack:4.0.3"));
         try {
             localStack.start();
             localStack.execInContainer("awslocal", "s3", "mb", "s3://" + BUCKET_NAME);
@@ -31,9 +31,14 @@ public class TestcontainersConfig {
         //registry.add("spring.cloud.aws.credentials.secret-key", localStack::getSecretKey);
         //registry.add("spring.cloud.aws.region.static", localStack::getRegion);
         //registry.add("spring.cloud.aws.endpoint", localStack::getEndpoint);
-
-        registry.add("app.bucket", () -> BUCKET_NAME);
-        registry.add("app.queue", () -> QUEUE_NAME);
         return localStack;
+    }
+
+    @Bean
+    DynamicPropertyRegistrar dynamicPropertyRegistrar() {
+        return (registry) -> {
+            registry.add("app.bucket", () -> BUCKET_NAME);
+            registry.add("app.queue", () -> QUEUE_NAME);
+        };
     }
 }
